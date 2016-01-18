@@ -1,0 +1,261 @@
+.content-grid {
+	clear: both;
+	margin-top: 30px;
+
+}
+
+.content-grid ul {
+	margin: 0 auto;
+	width: 100.5%;
+}
+
+.grid-square {
+	border: 1px solid #eee;
+	box-sizing: border-box;
+	color: #fff;
+	cursor: pointer;
+	float: left;
+	list-style: none;
+	margin-bottom: .5%;
+	margin-right: .5%;
+	transform: translate3d(0,0,0);
+	transition: all .5s;
+	width: 32.83%;
+}
+
+.grid-square:hover {
+	transform: scale(.95);
+
+}
+
+.grid-square.active {
+	transform: scale(.95);
+	cursor: default;
+}
+
+
+
+.grid-square .grid-square-hover {
+	position: relative;
+	z-index: 999;
+	float: left;
+	margin-top: 140%;
+	background: #ddd;
+	transition: margin-top .2s;
+	transform: translate3d(0,0,0);
+}
+
+.grid-square:hover .grid-square-hover {
+	margin-top: 33%;
+}
+
+.grid-square.active .grid-square-hover {
+	margin-top: 140%;
+}
+
+.grid-square .post-title {
+	font-weight: bold;
+	font-size: 1.4em;
+	float: left;
+	width: 100%;
+	color: #333;
+	padding: 8px 8px 5px;
+	line-height: .9em;
+	box-sizing: border-box;
+}
+
+.grid-square .grid-square-subtitle {
+	color: #555;
+	background: #ddd;
+	padding: 3px 8px;
+	font-weight: bold;
+	font-size: .8em;
+	line-height: 1.2em;
+}
+
+.grid-square:hover .grid-square-subtitle {
+	margin-top: 5px;
+}
+
+.grid-square .grid-item-thumb {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: auto;
+	max-width: none;
+}
+
+.grid-square:hover .grid-item-thumb {
+	opacity: .8;
+}
+
+.grid-square.active .grid-item-thumb {
+	opacity: .5;
+}
+
+.grid-item-inner-wrap {
+	position: relative;
+	padding-bottom: 100%;
+	height: 0;
+	overflow: hidden;
+	background-color: #ddd;
+
+}
+
+.touch .grid-square .grid-square-hover {
+	margin-top: 30%;
+}
+
+.touch .grid-square.active .grid-square-hover {
+	margin-top: 140%;
+}
+
+.touch .grid-square .grid-square-hover.grid-square-subtitle {
+	margin-top: 5px;
+}
+
+.active-container {
+	position: relative;
+	width: 100%;
+	height: auto;
+	cursor: default;
+	left: 0;
+	z-index: 9999;
+	background: #000;
+	min-height: 0;
+	transition: .3s min-height 400ms;
+	overflow: hidden;
+
+}
+.active-container.active {
+	min-height: 200px;
+}
+.active-container:focus {
+	outline: none;
+}
+
+.active-container .grid-loading {
+	background-image: url('https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif');
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 48px;
+	height: 48px;
+	left: 50%;
+	top: 50%;
+	margin-left: -24px;
+	margin-top: -24px;
+}
+
+.active-container .close-btn {
+	background: url('img/close_x.png') no-repeat center #ddd;
+	background-size: 20px;
+}
+.active-container .prev-btn {
+	background: url('img/prev_arrow.png') no-repeat center #ddd;
+	background-size: 20px;
+}
+.active-container .next-btn {
+	background: url('img/next_arrow.png') no-repeat center #ddd;
+	background-size: 20px;
+}
+
+.active-controls {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.active-btn {
+	position: relative;
+	display: block;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #ddd;
+	transition: background-color .15s;
+	width: 27px;
+	height: 27px;
+	cursor: pointer;
+	z-index: 9999;
+	margin-bottom: 3px;
+}
+.active-btn:hover {
+	background-color: #fff;
+}
+.active-btn.disabled, .active-btn.disabled:hover {
+	opacity: .3;
+	cursor: default;
+	background-color: #ddd;
+}
+
+.active-container .content {
+	display: none;
+}
+
+.active-container .grid-item-images {
+	position: relative;
+	width: 47%;
+	float: left;
+	background: #555;
+	box-sizing: border-box;
+
+}
+.active-container .grid-item-images a:last-of-type img {
+	margin-bottom: 0;
+}
+
+.active-container .grid-item-images img {
+	width: 100%;
+	max-width: 100%;
+}
+
+.active-container .grid-item-images .vid-poster {
+	display: none;
+}
+
+.active-container .grid-item-images .vid-wrapper {
+	display: block;
+	margin-bottom: 10px;
+
+}
+.active-container .grid-item-images .vid-wrapper:last-child {
+	margin-bottom: 0;
+}
+
+.active-container .post-title {
+	margin-left: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 1.6em;
+	width: auto;
+	background: none;
+	padding: 0;
+	color: #333;
+}
+
+.active-container .grid-item-content {
+	position: relative;
+	font-size: 14px;
+	float: left;
+	text-align: left;
+	padding: 40px 3% 40px 5%;
+	width: 45%;
+	z-index: 9998;
+
+}
+.active-container .grid-item-content p,
+.active-container .grid-item-content li,
+.active-container .grid-item-content address,
+.active-container .grid-item-content span {
+	color: #fff;
+}
+
+.active-container .grid-item-content .grid-square-subtitle {
+	display: block;
+	margin-bottom: 20px;
+	font-size: .9em;
+	font-weight: bold;
+	color: #ddd;
+	line-height: 1.2em;
+}
