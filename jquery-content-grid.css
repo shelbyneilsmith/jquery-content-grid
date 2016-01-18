@@ -123,10 +123,10 @@
 	left: 0;
 	z-index: 9999;
 	background: #000;
+	color: #fff;
 	min-height: 0;
 	transition: .3s min-height 400ms;
 	overflow: hidden;
-
 }
 .active-container.active {
 	min-height: 200px;
@@ -191,6 +191,7 @@
 
 .active-container .content {
 	display: none;
+	margin: 30px 30px 30px 60px;
 }
 
 .active-container .grid-item-images {

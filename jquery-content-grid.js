@@ -20,7 +20,8 @@
 			container: $('.content-grid'),
 			directionNav: false,
 			ajax: false,
-			getActiveContent: function() { console.log('Set up an active content callback function!'); },
+			getActiveContent: function() { return 'Set up an active content callback function!'; },
+			contentCallback: function() { console.log('Do you want to do something after the active container is filled?'); }
 		};
 
 		this.settings = $.extend({}, defaults, options);
@@ -99,26 +100,12 @@
 						success: function(response) {
 							$('.active-container .grid-loading').remove();
 
-							$('.active-container .content').html(response).fadeIn('fast', function() {
-								var activeHeight = 0;
-								var t_elem;  // the highest element (after the function runs)
-
-								$('.active-container .content').children().each(function () {
-									var $this = $(this);
-									if ( parseInt($this.css('height')) > activeHeight ) {
-										t_elem = this;
-										activeHeight = parseInt($this.css('height'));
-									}
-								});
-
-								$('.active-container').css('min-height', activeHeight);
-
-								ContentGrid.settings.ajax.successCallback($elem);
-							});
+							ContentGrid.populateActiveContent(response, ContentGrid.settings.contentCallback);
 						}
 					});
 				} else {
-					ContentGrid.settings.getActiveContent($elem);
+					var activeContent = ContentGrid.settings.getActiveContent();
+					ContentGrid.populateActiveContent(activeContent, ContentGrid.settings.contentCallback);
 				}
 
 				if ($('.grid-square.active').is('.grid-square:last-of-type')) {
@@ -143,6 +130,28 @@
 		}
 
 		return false;
+	};
+
+	$.ContentGrid.prototype.populateActiveContent = function(content, contentCallback) {
+		$('.active-container .content').html(content).fadeIn('fast', function() {
+			var activeHeight = 100;
+			var t_elem;  // the highest element (after the function runs)
+
+			$('.active-container .content').children().each(function () {
+				var $this = $(this);
+				if ( parseInt($this.css('height')) > activeHeight ) {
+					t_elem = this;
+					var newActiveHeight = parseInt($this.css('height'));
+					if (newActiveHeight > activeHeight) {
+						activeHeight = newActiveHeight;
+					}
+				}
+			});
+
+			$('.active-container').css('min-height', activeHeight);
+
+			contentCallback();
+		});
 	};
 
 	$.ContentGrid.prototype.bindActiveBtns = function() {
